@@ -1,10 +1,10 @@
-import React, { useLayoutEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+import React, { useLayoutEffect, useRef } from "react";
+import { BiSearchAlt } from "react-icons/bi";
 import hero1 from "../../assets/hero-01.jpg";
 import hero2 from "../../assets/hero-02.jpg";
 import hero3 from "../../assets/hero-03.jpg";
-import { BiSearchAlt } from "react-icons/bi";
 import Badge from "../../components/reusable/Badge";
-import { gsap } from "gsap";
 
 const Landing = () => {
   const keywords = [
@@ -72,6 +72,8 @@ const Landing = () => {
       document.removeEventListener("mousemove", movement);
     };
   }, []);
+
+
 
   return (
     <div ref={el} className='h-screen'>
