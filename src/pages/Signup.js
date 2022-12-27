@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { toast } from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import loginImage from "../assets/login.svg";
-import { createUser } from "../features/auth/authSlice";
+import { createUser, loginUserWithGoogle } from "../features/auth/authSlice";
 const Signup = () => {
   const { handleSubmit, register, reset, control } = useForm();
   const password = useWatch({ control, name: "password" });
@@ -11,6 +12,8 @@ const Signup = () => {
   const navigate = useNavigate();
   const [disabled, setDisabled] = useState(true);
   const dispatch = useDispatch();
+
+  const { isLoading, email , isError ,error} = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (
@@ -26,6 +29,21 @@ const Signup = () => {
     }
   }, [password, confirmPassword]);
 
+  useEffect(() => {
+    if (!isLoading && email) {
+      navigate("/");
+    }
+  }, [isLoading, email]);
+
+  useEffect(() => {
+    if (isLoading) {
+      toast.loading("loading" , {id:"signUp"})
+    }
+    if(error){
+      toast.error(error , {id:"signUp"})
+    }
+  }, [isLoading, isError, error ]);
+
   const onSubmit = ({ email, password }) => {
     console.log(email, password);
     dispatch(createUser({ email, password }));
@@ -37,6 +55,7 @@ const Signup = () => {
         <img src={loginImage} className="h-full w-full" alt="" />
       </div>
       <div className="w-1/2 grid place-items-center">
+      
         <div className="bg-[#FFFAF4] rounded-lg grid place-items-center p-10">
           <h1 className="mb-10 font-medium text-2xl">Sign up</h1>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -81,6 +100,14 @@ const Signup = () => {
                   disabled={disabled}
                 >
                   Sign up
+                </button>
+
+                <button
+                  type="button"
+                  onClick={()=>dispatch(loginUserWithGoogle())}
+                  className="font-bold text-white py-3 my-3 rounded-full bg-primary w-full"
+                >
+                 Sign in with google
                 </button>
               </div>
               <div>
