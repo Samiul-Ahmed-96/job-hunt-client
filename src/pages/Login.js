@@ -11,8 +11,12 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { isLoading, email , isError , error } = useSelector((state) => state.auth);
+  const { isLoading, email, isError, error ,IsError} = useSelector(
+    (state) => state.auth
+  );
+  
 
+  //Handle Login
   const onSubmit = ({ email, password }) => {
     dispatch(loginUser({ email, password }));
     reset();
@@ -25,14 +29,10 @@ const Login = () => {
   }, [isLoading, email]);
 
   useEffect(() => {
-    if (isLoading) {
-      toast.loading("loading" , {id:"login"})
+    if (isError) {
+      toast.error(error, { id: "login" });
     }
-    if(error){
-      toast.error(error , {id:"login"})
-    }
-  }, [isLoading, isError,error ]);
-
+  }, [isError, error]);
 
   return (
     <div className="flex h-screen items-center">
@@ -40,7 +40,6 @@ const Login = () => {
         <img src={loginImage} className="h-full w-full" alt="" />
       </div>
       <div className="w-1/2 grid place-items-center">
-        
         <div className="bg-[#FFFAF4] rounded-lg grid place-items-center p-10">
           <h1 className="mb-10 font-medium text-2xl">Login</h1>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -70,10 +69,10 @@ const Login = () => {
                 </button>
                 <button
                   type="button"
-                  onClick={()=>dispatch(loginUserWithGoogle())}
+                  onClick={() => dispatch(loginUserWithGoogle())}
                   className="font-bold text-white py-3 my-3 rounded-full bg-primary w-full"
                 >
-                 Login with google
+                  Login with google
                 </button>
               </div>
               <div>

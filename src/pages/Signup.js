@@ -13,7 +13,9 @@ const Signup = () => {
   const [disabled, setDisabled] = useState(true);
   const dispatch = useDispatch();
 
-  const { isLoading, email , isError ,error} = useSelector((state) => state.auth);
+  const { isLoading, email, isError, error } = useSelector(
+    (state) => state.auth
+  );
 
   useEffect(() => {
     if (
@@ -36,13 +38,10 @@ const Signup = () => {
   }, [isLoading, email]);
 
   useEffect(() => {
-    if (isLoading) {
-      toast.loading("loading" , {id:"signUp"})
+    if (isError) {
+      toast.error(error, { id: "signUp" });
     }
-    if(error){
-      toast.error(error , {id:"signUp"})
-    }
-  }, [isLoading, isError, error ]);
+  }, [ isError, error]);
 
   const onSubmit = ({ email, password }) => {
     console.log(email, password);
@@ -55,7 +54,6 @@ const Signup = () => {
         <img src={loginImage} className="h-full w-full" alt="" />
       </div>
       <div className="w-1/2 grid place-items-center">
-      
         <div className="bg-[#FFFAF4] rounded-lg grid place-items-center p-10">
           <h1 className="mb-10 font-medium text-2xl">Sign up</h1>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -104,10 +102,10 @@ const Signup = () => {
 
                 <button
                   type="button"
-                  onClick={()=>dispatch(loginUserWithGoogle())}
+                  onClick={() => dispatch(loginUserWithGoogle())}
                   className="font-bold text-white py-3 my-3 rounded-full bg-primary w-full"
                 >
-                 Sign in with google
+                  Sign in with google
                 </button>
               </div>
               <div>
