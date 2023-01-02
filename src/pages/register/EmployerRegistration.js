@@ -6,12 +6,15 @@ import { useNavigate } from "react-router-dom";
 import { useRegisterMutation } from "../../features/auth/authApi";
 
 const EmployerRegistration = () => {
-  const { handleSubmit, register, control, reset } = useForm();
-  const term = useWatch({ control, name: "term" });
-
   const {
     user: { email },
   } = useSelector((state) => state.auth);
+  const { handleSubmit, register, control, reset } = useForm({
+    defaultValues:email
+  });
+  const term = useWatch({ control, name: "term" });
+
+
 
   const navigate = useNavigate();
 
@@ -79,7 +82,8 @@ const EmployerRegistration = () => {
             </label>
             <input
               type="email"
-              value={email}
+              disabled
+              className="cursor-not-allowed"
               id="email"
               {...register("email")}
             />
