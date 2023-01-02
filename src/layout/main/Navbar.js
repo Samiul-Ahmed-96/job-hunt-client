@@ -22,8 +22,8 @@ const Navbar = () => {
         pathname === "/" ? null : "bg-white"
       }`}
     >
-      <ul className="max-w-7xl mx-auto flex gap-3 h-full items-center">
-        <li className="flex-auto font-semibold text-2xl">
+      <ul className="max-w-[1600px] px-5 mx-auto flex gap-3 h-full items-center">
+        <li className="flex-auto font-semibold text-2xl text-primary">
           <Link to="/">JobHunt</Link>
         </li>
         <li>

@@ -77,7 +77,7 @@ const Landing = () => {
 
   return (
     <div ref={el} className='h-screen'>
-      <div className='max-w-2xl h-[80vh] rounded-b-full absolute top-0 left-1/2 -translate-x-1/2 overflow-hidden z-0'>
+      <div className='max-w-4xl h-[80vh] rounded-b-full absolute top-0 left-1/2 -translate-x-1/2 overflow-hidden z-0 md:w-full md:right-5'>
         <img
           id='hero1'
           src={hero1}
@@ -135,10 +135,10 @@ const Landing = () => {
               </div>
             </div>
           </div>
-          <div className='flex flex-col justify-between '>
+          <div className='flex flex-col justify-between md:justify-around md:mr-6'>
             <div className='statCard rounded-3xl shadow-2xl p-7 bg-white relative left-[80%]'>
               <div>
-                <span className='text-2xl font-bold'>319 </span>
+                <span className='text-2xl text-purple-600 font-bold'>319 </span>
                 <span>Job offers</span>
               </div>
               <p className='font-light text-gray-500'>
@@ -147,7 +147,7 @@ const Landing = () => {
             </div>
             <div className='statCard rounded-3xl shadow-2xl p-7 bg-white relative left-[60%]'>
               <div>
-                <span className='text-2xl font-bold'>265 </span>
+                <span className='text-2xl text-lime-600 font-bold'>265 </span>
                 <span>Job offers</span>
               </div>
               <p className='font-light text-gray-500'>
@@ -156,7 +156,7 @@ const Landing = () => {
             </div>
             <div className='statCard rounded-3xl shadow-2xl p-7 bg-white relative left-[40%]'>
               <div>
-                <span className='text-2xl font-bold'>324 </span>
+                <span className='text-2xl text-rose-500 font-bold'>324 </span>
                 <span>Job offers</span>
               </div>
               <p className='font-light text-gray-500'>In Project Management</p>
