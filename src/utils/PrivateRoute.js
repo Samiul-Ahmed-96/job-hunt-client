@@ -5,16 +5,18 @@ import Loading from "../components/reusable/Loading";
 
 const PrivateRoute = ({ children }) => {
   const { pathname } = useLocation();
-  const {email,isLoading} = useSelector(state => state.auth)
+  const {
+    user: { email },
+    isLoading,
+  } = useSelector((state) => state.auth);
 
-
-  console.log(isLoading)
+  console.log(isLoading);
   if (isLoading) {
     return <Loading />;
   }
 
   if (!isLoading && !email) {
-    return <Navigate to='/login' state={{ path: pathname }} />;
+    return <Navigate to="/login" state={{ path: pathname }} />;
   }
 
   return children;
