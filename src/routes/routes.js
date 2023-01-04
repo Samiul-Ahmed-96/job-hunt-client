@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "../layout/dashboard/Dashboard";
 import Main from "../layout/main/Main";
+import AppliedJobs from "../pages/CandidateDashboard/AppliedJobs";
 import CandidateDashboard from "../pages/CandidateDashboard/CandidateDashboard";
 import AddJob from "../pages/EmployerDashboard/AddJob";
 import EmployerDashboard from "../pages/EmployerDashboard/EmployerDashboard";
@@ -67,6 +68,10 @@ const routes = createBrowserRouter([
       {
         path: "add-job",
         element: <AddJob />,
+      },
+      {
+        path: "applied-jobs",
+        element: <AppliedJobs />,
       },
       {
         path: "employer",
