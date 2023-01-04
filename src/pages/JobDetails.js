@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 
@@ -10,10 +10,13 @@ import meeting from "../assets/meeting.jpg";
 import {
   useApplyJobMutation,
   useAskedQuestionMutation,
-  useGetJobByIdQuery
+  useGetJobByIdQuery,
+  useReplyQuesMutation
 } from "../features/job/jobApi";
 
 const JobDetails = () => {
+  const [reply , setReply] = useState("");
+
   const navigate = useNavigate();
   const { id } = useParams();
   const { user } = useSelector((state) => state.auth);
@@ -21,6 +24,7 @@ const JobDetails = () => {
   const { data, isLoading, isError } = useGetJobByIdQuery(id);
   const [applyJob, { isSuccess }] = useApplyJobMutation();
   const [askedQues, {}] = useAskedQuestionMutation();
+  const [replyQues , {}] = useReplyQuesMutation();
   const {
     position,
     companyName,
@@ -52,7 +56,6 @@ const JobDetails = () => {
       email: user.email,
       jobId: _id,
     };
-    console.log(data);
     applyJob(data);
   };
 
@@ -65,6 +68,14 @@ const JobDetails = () => {
     };
     askedQues(quesData);
   };
+
+  const handleReply = (id) =>{
+    const data = {
+      reply,
+      userId : id
+    }
+    replyQues(data);
+  }
 
   return (
     <div className="pt-14 grid grid-cols-12 gap-5">
@@ -144,10 +155,12 @@ const JobDetails = () => {
                         placeholder="Reply"
                         type="text"
                         className="w-full"
+                        onBlur={(e)=> setReply(e.target.value)}
                       />
                       <button
                         className="shrink-0 h-14 w-14 bg-primary/10 border border-primary hover:bg-primary rounded-full transition-all  grid place-items-center text-primary hover:text-white"
                         type="button"
+                        onClick={()=> handleReply(id)}
                       >
                         <BsArrowRightShort size={30} />
                       </button>
