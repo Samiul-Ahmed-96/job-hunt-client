@@ -9,15 +9,14 @@ const authApi = apiSlice.injectEndpoints({
         url: "/user",
         body: data,
       }),
-    async onQueryStarted(data , {dispatch , queryFulfilled}){
-        try{
-            const res = await queryFulfilled;
-            dispatch(getUser(data.email));
+      async onQueryStarted(data, { dispatch, queryFulfilled }) {
+        try {
+          const res = await queryFulfilled;
+          dispatch(getUser(data.email));
+        } catch (error) {
+          console.log(error);
         }
-        catch(error){
-            console.log(error)
-        }
-    }
+      },
     }),
   }),
 });

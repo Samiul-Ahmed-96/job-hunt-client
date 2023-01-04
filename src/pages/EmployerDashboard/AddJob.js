@@ -5,15 +5,15 @@ import { useSelector } from "react-redux";
 import { usePostJobMutation } from "../../features/job/jobApi";
 
 const AddJob = () => {
-  const {user : {companyName}} = useSelector(state => state.auth);
-
+  const {
+    user: { companyName },
+  } = useSelector((state) => state.auth);
 
   const { handleSubmit, register, control } = useForm({
-    defaultValues:companyName
+    defaultValues: companyName,
   });
 
   const [postJob, { isLoading, isError }] = usePostJobMutation();
-  
 
   const {
     fields: resFields,
@@ -33,7 +33,7 @@ const AddJob = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    postJob(data)
+    postJob({...data , applicants : [] , queries : []});
   };
 
   return (
@@ -55,11 +55,7 @@ const AddJob = () => {
           <label className="mb-2" htmlFor="companyName">
             Company Name
           </label>
-          <input
-            type="text"
-            id="companyName"
-            {...register("companyName")}
-          />
+          <input type="text" id="companyName" {...register("companyName")} />
         </div>
         <div className="flex flex-col w-full max-w-xs">
           <label className="mb-2" htmlFor="experience">
