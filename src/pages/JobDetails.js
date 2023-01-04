@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import uuid from "react-uuid";
 import meeting from "../assets/meeting.jpg";
-import { useGetJobByIdQuery } from "../features/job/jobApi";
+import { useApplyJobMutation, useGetJobByIdQuery } from "../features/job/jobApi";
 
 const JobDetails = () => {
   const navigate = useNavigate();
@@ -15,6 +15,7 @@ const JobDetails = () => {
   const {user} = useSelector(state => state.auth);
 
   const { data, isLoading, isError } = useGetJobByIdQuery(id);
+  const [applyJob  , {isSuccess}] = useApplyJobMutation();
   const {
     position,
     companyName,
@@ -48,7 +49,8 @@ const JobDetails = () => {
       email : user.email,
       jobId : _id
     };
-    console.log(data)
+    console.log(data);
+    applyJob(data);
   }
 
   return (
