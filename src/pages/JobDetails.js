@@ -1,4 +1,5 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 
 import { BsArrowReturnRight, BsArrowRightShort } from "react-icons/bs";
@@ -6,16 +7,20 @@ import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import uuid from "react-uuid";
 import meeting from "../assets/meeting.jpg";
-import { useApplyJobMutation, useGetJobByIdQuery } from "../features/job/jobApi";
+import {
+  useApplyJobMutation,
+  useAskedQuestionMutation,
+  useGetJobByIdQuery
+} from "../features/job/jobApi";
 
 const JobDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-
-  const {user} = useSelector(state => state.auth);
-
+  const { user } = useSelector((state) => state.auth);
+  const { register, handleSubmit, reset } = useForm();
   const { data, isLoading, isError } = useGetJobByIdQuery(id);
-  const [applyJob  , {isSuccess}] = useApplyJobMutation();
+  const [applyJob, { isSuccess }] = useApplyJobMutation();
+  const [askedQues, {}] = useAskedQuestionMutation();
   const {
     position,
     companyName,
@@ -32,26 +37,34 @@ const JobDetails = () => {
     _id,
   } = data?.data || {};
 
-
-  const handleApply = () =>{
-
-    if(user.role === "employer"){
-      toast.error("You need a candidate account to apply")
+  const handleApply = () => {
+    if (user.role === "employer") {
+      toast.error("You need a candidate account to apply");
       return;
     }
-    if(user.role === ""){
-      navigate("/register")
+    if (user.role === "") {
+      navigate("/register");
       return;
     }
 
     const data = {
-      userId : user._id,
-      email : user.email,
-      jobId : _id
+      userId: user._id,
+      email: user.email,
+      jobId: _id,
     };
     console.log(data);
     applyJob(data);
-  }
+  };
+
+  const handleAskedQuestion = (data) => {
+    const quesData = {
+      userId: user._id,
+      email: user.email,
+      jobId: _id,
+      question: data.askedQues,
+    };
+    askedQues(quesData);
+  };
 
   return (
     <div className="pt-14 grid grid-cols-12 gap-5">
@@ -62,7 +75,9 @@ const JobDetails = () => {
         <div className="space-y-5">
           <div className="flex justify-between items-center mt-5">
             <h1 className="text-xl font-semibold text-primary">{position}</h1>
-            <button onClick={handleApply} className="btn">Apply</button>
+            <button onClick={handleApply} className="btn">
+              Apply
+            </button>
           </div>
           <div>
             <h1 className="text-primary text-lg font-medium mb-3">Overview</h1>
@@ -84,7 +99,7 @@ const JobDetails = () => {
             </h1>
             <ul>
               {requirements?.map((skill) => (
-                <li key={uuid()}  className="flex items-center">
+                <li key={uuid()} className="flex items-center">
                   <BsArrowRightShort /> <span>{skill}</span>
                 </li>
               ))}
@@ -96,7 +111,7 @@ const JobDetails = () => {
             </h1>
             <ul>
               {responsibilities?.map((skill) => (
-                <li key={uuid()}  className="flex items-center">
+                <li key={uuid()} className="flex items-center">
                   <BsArrowRightShort /> <span>{skill}</span>
                 </li>
               ))}
@@ -111,41 +126,55 @@ const JobDetails = () => {
             </h1>
             <div className="text-primary my-2">
               {queries?.map(({ question, email, reply, id }) => (
-                <div key={uuid()} >
+                <div key={uuid()}>
                   <small>{email}</small>
                   <p className="text-lg font-medium">{question}</p>
                   {reply?.map((item) => (
-                    <p key={uuid()}  className="flex items-center gap-2 relative left-5">
+                    <p
+                      key={uuid()}
+                      className="flex items-center gap-2 relative left-5"
+                    >
                       <BsArrowReturnRight /> {item}
                     </p>
                   ))}
 
-                  <div className="flex gap-3 my-5">
-                    <input placeholder="Reply" type="text" className="w-full" />
-                    <button
-                      className="shrink-0 h-14 w-14 bg-primary/10 border border-primary hover:bg-primary rounded-full transition-all  grid place-items-center text-primary hover:text-white"
-                      type="button"
-                    >
-                      <BsArrowRightShort size={30} />
-                    </button>
-                  </div>
+                  {user.role === "employer" && (
+                    <div className="flex gap-3 my-5">
+                      <input
+                        placeholder="Reply"
+                        type="text"
+                        className="w-full"
+                      />
+                      <button
+                        className="shrink-0 h-14 w-14 bg-primary/10 border border-primary hover:bg-primary rounded-full transition-all  grid place-items-center text-primary hover:text-white"
+                        type="button"
+                      >
+                        <BsArrowRightShort size={30} />
+                      </button>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
 
-            <div className="flex gap-3 my-5">
-              <input
-                placeholder="Ask a question..."
-                type="text"
-                className="w-full"
-              />
-              <button
-                className="shrink-0 h-14 w-14 bg-primary/10 border border-primary hover:bg-primary rounded-full transition-all  grid place-items-center text-primary hover:text-white"
-                type="button"
-              >
-                <BsArrowRightShort size={30} />
-              </button>
-            </div>
+            {user.role === "candidate" && (
+              <form onSubmit={handleSubmit(handleAskedQuestion)}>
+                <div className="flex gap-3 my-5">
+                  <input
+                    placeholder="Ask a question..."
+                    type="text"
+                    className="w-full"
+                    {...register("askedQues")}
+                  />
+                  <button
+                    className="shrink-0 h-14 w-14 bg-primary/10 border border-primary hover:bg-primary rounded-full transition-all  grid place-items-center text-primary hover:text-white"
+                    type="submit"
+                  >
+                    <BsArrowRightShort size={30} />
+                  </button>
+                </div>
+              </form>
+            )}
           </div>
         </div>
       </div>
