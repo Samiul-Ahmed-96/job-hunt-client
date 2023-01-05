@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import loginImage from "../assets/login.svg";
 import { loginUser, loginUserWithGoogle } from "../features/auth/authSlice";
 const Login = () => {
+  const {user} = useSelector(state => state.auth)
   const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -33,6 +34,16 @@ const Login = () => {
       toast.error(error, { id: "login" });
     }
   }, [isError, error]);
+
+  
+  useEffect(()=>{
+    if(user.role == 'employer'){
+      navigate('/dashboard')
+    }
+    if(user.role == 'candidate'){
+      navigate('/dashboard')
+    }
+  },[user.role])
 
   return (
     <div className="flex h-screen items-center">

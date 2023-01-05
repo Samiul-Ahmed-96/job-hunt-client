@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 
@@ -79,6 +79,13 @@ const JobDetails = () => {
     replyQues(data);
     reset();
   }
+
+  useEffect(()=>{
+    if(isSuccess){
+      toast.success("Apply Successfully")
+    }
+  },[isSuccess])
+
 
   return (
     <div className="pt-14 grid grid-cols-12 gap-5">
