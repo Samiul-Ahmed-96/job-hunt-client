@@ -21,10 +21,10 @@ const JobDetails = () => {
   const { id } = useParams();
   const { user } = useSelector((state) => state.auth);
   const { register, handleSubmit, reset } = useForm();
-  const { data, isLoading, isError } = useGetJobByIdQuery(id);
+  const { data, isLoading, isError } = useGetJobByIdQuery(id ,{pollingInterval : 5000});
   const [applyJob, { isSuccess }] = useApplyJobMutation();
   const [askedQues, {}] = useAskedQuestionMutation();
-  const [replyQues , {}] = useReplyQuesMutation();
+  const [replyQues] = useReplyQuesMutation();
   const {
     position,
     companyName,
@@ -67,14 +67,17 @@ const JobDetails = () => {
       question: data.askedQues,
     };
     askedQues(quesData);
-  };
+    reset()
+    };
 
-  const handleReply = (id) =>{
+  const handleReplyQues = (id) =>{
     const data = {
       reply,
-      userId : id
+      userId : id,
+      jobId: _id,
     }
     replyQues(data);
+    reset();
   }
 
   return (
@@ -97,11 +100,14 @@ const JobDetails = () => {
           <div>
             <h1 className="text-primary text-lg font-medium mb-3">Skills</h1>
             <ul>
-              {skills?.map((skill) => (
-                <li key={uuid()} className="flex items-center">
+              {
+                skills?.map(skill => 
+                  
+                  <li key={uuid()} className="flex items-center">
                   <BsArrowRightShort /> <span>{skill}</span>
                 </li>
-              ))}
+                  )
+              }
             </ul>
           </div>
           <div>
@@ -155,12 +161,12 @@ const JobDetails = () => {
                         placeholder="Reply"
                         type="text"
                         className="w-full"
-                        onBlur={(e)=> setReply(e.target.value)}
+                        onBlur={(e)=>setReply(e.target.value)}
                       />
                       <button
                         className="shrink-0 h-14 w-14 bg-primary/10 border border-primary hover:bg-primary rounded-full transition-all  grid place-items-center text-primary hover:text-white"
                         type="button"
-                        onClick={()=> handleReply(id)}
+                        onClick={()=> handleReplyQues(id)}
                       >
                         <BsArrowRightShort size={30} />
                       </button>

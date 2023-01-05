@@ -82,9 +82,9 @@ const EmployerRegistration = () => {
             </label>
             <input
               type="email"
-              disabled
-              className="cursor-not-allowed"
               id="email"
+              className="cursor-not-allowed"
+              value={email}
               {...register("email")}
             />
           </div>
