@@ -11,6 +11,14 @@ const jobApi = apiSlice.injectEndpoints({
       invalidatesTags: ["jobs"],
     }),
 
+    deleteJob: builder.mutation({
+      query: (id) => ({
+        method: "DELETE",
+        url: `/job/${id}`,
+      }), 
+      invalidatesTags : ['jobs']
+    }),
+
     applyJob: builder.mutation({
       query: (data) => ({
         method: "PATCH",
@@ -19,21 +27,21 @@ const jobApi = apiSlice.injectEndpoints({
       }),
     }),
 
-    askedQuestion:builder.mutation({
-      query:(data)=>({
-        method:"PATCH",
-        url:"/query",
-        body:data
+    askedQuestion: builder.mutation({
+      query: (data) => ({
+        method: "PATCH",
+        url: "/query",
+        body: data,
       }),
-      invalidatesTags : ["job"]
+      invalidatesTags: ["job"],
     }),
-    replyQues:builder.mutation({
-      query:(data)=>({
-        method:"PATCH",
-        url:"/reply",
-        body:data
+    replyQues: builder.mutation({
+      query: (data) => ({
+        method: "PATCH",
+        url: "/reply",
+        body: data,
       }),
-      invalidatesTags:["job"]
+      invalidatesTags: ["job"],
     }),
 
     getJob: builder.query({
@@ -46,16 +54,23 @@ const jobApi = apiSlice.injectEndpoints({
       query: (id) => ({
         url: `/job/${id}`,
       }),
-      providesTags : ['job',"jobs"]
+      providesTags: ["job", "jobs"],
     }),
-    getAppliedJobs : builder.query({
-      query:(email)=>({
-        url : `/applied-jobs/${email}`
-      })
-    })
+    getAppliedJobs: builder.query({
+      query: (email) => ({
+        url: `/applied-jobs/${email}`,
+      }),
+    }),
   }),
-
 });
 
-export const { usePostJobMutation, useGetJobByIdQuery, useGetJobQuery , useApplyJobMutation , useGetAppliedJobsQuery ,useAskedQuestionMutation , useReplyQuesMutation} =
-  jobApi;
+export const {
+  usePostJobMutation,
+  useGetJobByIdQuery,
+  useGetJobQuery,
+  useApplyJobMutation,
+  useGetAppliedJobsQuery,
+  useAskedQuestionMutation,
+  useReplyQuesMutation,
+  useDeleteJobMutation
+} = jobApi;

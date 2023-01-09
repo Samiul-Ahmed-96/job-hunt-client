@@ -1,17 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { toast } from "react-hot-toast";
 import { FiTrash } from "react-icons/fi";
 import { useSelector } from "react-redux";
 import Loading from "../../components/reusable/Loading";
-import { useGetJobQuery } from "../../features/job/jobApi";
+import {
+    useDeleteJobMutation,
+    useGetJobQuery
+} from "../../features/job/jobApi";
 
 const ManageJob = () => {
   const { user } = useSelector((state) => state.auth);
   const { data, isLoading } = useGetJobQuery();
+  const [deleteJob, { isSuccess }] = useDeleteJobMutation();
 
   const jobs = data?.data || [];
 
   const filterEmployerJob = jobs.filter((job) => job?.email === user.email);
   console.log(filterEmployerJob);
+  const handleDeleteJob = (id) => {
+    deleteJob(id);
+  };
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("Delete Successfully");
+    }
+  }, [isSuccess]);
 
   if (isLoading) {
     return <Loading />;
@@ -58,6 +71,7 @@ const ManageJob = () => {
                   <td class="px-6 py-4">{job?.salaryRange}</td>
                   <td class="px-6 py-4 text-right">
                     <button
+                      onClick={() => handleDeleteJob(job?._id)}
                       type="button"
                       className="grid place-items-center rounded-full flex-shrink-0 bg-red-500/20 border border-red-500 h-11 w-11 group transition-all hover:bg-red-500"
                     >
