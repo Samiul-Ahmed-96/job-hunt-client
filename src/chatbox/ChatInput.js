@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineSend } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { usePostChatMutation } from "../features/chat/chatApi";
 import { useGetUserByIdQuery } from "../features/user/userApi";
 
 const ChatInput = () => {
@@ -9,6 +10,8 @@ const ChatInput = () => {
   const { id } = useParams();
   const { user } = useSelector((state) => state.auth);
   const { data } = useGetUserByIdQuery(id);
+
+  const [postChat , {isLoading,isSuccess}] = usePostChatMutation();
 
   const sender = user.email;
   const receiver = data?.data.email;
@@ -21,7 +24,7 @@ const ChatInput = () => {
       receiver,
       message
     }
-    console.log(data);
+    postChat(data);
   }
 
   return (
