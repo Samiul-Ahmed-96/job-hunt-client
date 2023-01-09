@@ -3,8 +3,10 @@ import Dashboard from "../layout/dashboard/Dashboard";
 import Main from "../layout/main/Main";
 import AppliedJobs from "../pages/CandidateDashboard/AppliedJobs";
 import CandidateDashboard from "../pages/CandidateDashboard/CandidateDashboard";
+import Candidates from "../pages/candidates/Candidates";
 import AddJob from "../pages/EmployerDashboard/AddJob";
 import EmployerDashboard from "../pages/EmployerDashboard/EmployerDashboard";
+import Employers from "../pages/employers/Employers";
 
 import Home from "../pages/home/Home";
 import JobDetails from "../pages/JobDetails";
@@ -26,6 +28,14 @@ const routes = createBrowserRouter([
       {
         path: "/jobs",
         element: <Jobs />,
+      },
+      {
+        path: "/employers",
+        element: <Employers />,
+      },
+      {
+        path: "/candidates",
+        element: <Candidates />,
       },
       {
         path: "/job-details/:id",

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
+import Loading from '../components/reusable/Loading';
 
 import { BsArrowReturnRight, BsArrowRightShort } from "react-icons/bs";
 import { useSelector } from "react-redux";
@@ -86,6 +87,10 @@ const JobDetails = () => {
     }
   },[isSuccess])
 
+
+  if(isLoading) { 
+    return <Loading/>
+  }
 
   return (
     <div className="pt-14 grid grid-cols-12 gap-5">
