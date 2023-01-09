@@ -11,26 +11,34 @@ const ChatInput = () => {
   const { user } = useSelector((state) => state.auth);
   const { data } = useGetUserByIdQuery(id);
 
-  const [postChat , {isLoading,isSuccess}] = usePostChatMutation();
+  const [postChat, { isLoading, isSuccess }] = usePostChatMutation();
 
   const sender = user.email;
   const receiver = data?.data.email;
 
   console.log(sender, receiver);
 
-  const handleSubmitMessage = () =>{
-   const data  = {
+  const handleSubmitMessage = () => {
+    const data = {
       sender,
       receiver,
-      message
-    }
+      message,
+    };
     postChat(data);
-  }
+  };
 
   return (
     <div className="fixed bottom-10 right-10 flex">
-      <input onBlur={(e)=>setMessage(e.target.value)} className="mr-3" type="text" placeholder="Text.." />
-      <button onClick={()=>handleSubmitMessage()} className="bg-primary/10 p-4 rounded-full flex items-center hover:bg-primary hover:text-white gap-1">
+      <input
+        onBlur={(e) => setMessage(e.target.value)}
+        className="mr-3"
+        type="text"
+        placeholder="Text.."
+      />
+      <button
+        onClick={() => handleSubmitMessage()}
+        className="bg-primary/10 p-4 rounded-full flex items-center hover:bg-primary hover:text-white gap-1"
+      >
         Send <AiOutlineSend />
       </button>
     </div>

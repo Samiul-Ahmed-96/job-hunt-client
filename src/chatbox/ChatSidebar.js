@@ -25,13 +25,21 @@ const ChatSidebar = () => {
         </div>
         {user.role == "employer" &&
           filterCandidates.map((candidate) => (
-            <Link key={uuid()} to={`/chat/${candidate._id}`} className="hover:bg-primary hover:text-white bg-primary/10 transition-all w-full block py-2 px-3 rounded-full">
+            <Link
+              key={uuid()}
+              to={`/chat/${candidate._id}`}
+              className="hover:bg-primary hover:text-white bg-primary/10 transition-all w-full block py-2 px-3 rounded-full"
+            >
               {candidate.firstName} {candidate.lastName}
             </Link>
           ))}
         {user.role == "candidate" &&
-        filterEmployers.map((employer) => (
-            <Link key={uuid()} to={`/chat/${employer._id}`} className="hover:bg-primary hover:text-white bg-primary/10 transition-all w-full block py-2 px-3 rounded-full">
+          filterEmployers.map((employer) => (
+            <Link
+              key={uuid()}
+              to={`/chat/${employer._id}`}
+              className="hover:bg-primary hover:text-white bg-primary/10 transition-all w-full block py-2 px-3 rounded-full"
+            >
               {employer.firstName} {employer.lastName}
             </Link>
           ))}
