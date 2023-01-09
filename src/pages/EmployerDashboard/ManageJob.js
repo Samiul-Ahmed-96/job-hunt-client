@@ -53,6 +53,9 @@ const ManageJob = () => {
                   Salary
                 </th>
                 <th scope="col" class="px-6 py-3">
+                  Total Apply
+                </th>
+                <th scope="col" class="px-6 py-3">
                   Action
                 </th>
               </tr>
@@ -69,6 +72,7 @@ const ManageJob = () => {
                   <td class="px-6 py-4">{job?.companyName}</td>
                   <td class="px-6 py-4">{job?.experience}</td>
                   <td class="px-6 py-4">{job?.salaryRange}</td>
+                  <td class="px-6 py-4">{job?.applicants.length}</td>
                   <td class="px-6 py-4 text-right">
                     <button
                       onClick={() => handleDeleteJob(job?._id)}

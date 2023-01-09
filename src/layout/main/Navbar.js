@@ -1,5 +1,7 @@
 import { signOut } from "firebase/auth";
 import React from "react";
+import { BsChatDots } from "react-icons/bs";
+import { FiLogOut } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { logout } from "../../features/auth/authSlice";
@@ -47,10 +49,11 @@ const Navbar = () => {
 
           {email ? (
             <button
+              title="Logout"
               onClick={handleLogout}
               className="border border-black px-2 py-1 rounded-full hover:border-primary hover:text-white hover:bg-primary hover:px-4 transition-all"
             >
-              Logout
+              <FiLogOut/>
             </button>
           ) : (
             <li>
@@ -62,7 +65,9 @@ const Navbar = () => {
               </Link>
             </li>
           )}
-
+          {email && <Link title="Go To Chat" className="border border-black px-2 py-1 rounded-full hover:border-primary hover:text-white hover:bg-primary hover:px-4 transition-all" to={'/chat'}>
+            <BsChatDots/>
+          </Link>}
           {email && role && (
             <li>
               <Link

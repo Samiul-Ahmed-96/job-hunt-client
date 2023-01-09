@@ -6,7 +6,6 @@ const Sidebar = () => {
 
   const  {user : {role}} = useSelector(state => state.auth);
 
-  console.log(role)
 
   const employerRoutes = [
     {

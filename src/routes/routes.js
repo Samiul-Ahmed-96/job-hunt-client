@@ -1,4 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
+import ChatArea from "../chatbox/ChatArea";
+import Chatbox from "../chatbox/Chatbox";
 import Dashboard from "../layout/dashboard/Dashboard";
 import Main from "../layout/main/Main";
 import AppliedJobs from "../pages/CandidateDashboard/AppliedJobs";
@@ -8,7 +10,6 @@ import AddJob from "../pages/EmployerDashboard/AddJob";
 import EmployerDashboard from "../pages/EmployerDashboard/EmployerDashboard";
 import ManageJob from "../pages/EmployerDashboard/ManageJob";
 import Employers from "../pages/employers/Employers";
-
 import Home from "../pages/home/Home";
 import JobDetails from "../pages/JobDetails";
 import Jobs from "../pages/Jobs";
@@ -50,6 +51,7 @@ const routes = createBrowserRouter([
         path: "/signup",
         element: <Signup />,
       },
+      
       {
         path: "/register",
         element: (
@@ -67,6 +69,20 @@ const routes = createBrowserRouter([
         ),
       },
     ],
+  },
+  {
+    path: "/chat",
+    element: (
+      <PrivateRoute>
+        <Chatbox />
+      </PrivateRoute>
+    ),
+    children : [
+      {
+        path:'/chat/:id',
+        element : <ChatArea/>
+      }
+    ]
   },
   {
     path: "/dashboard",
