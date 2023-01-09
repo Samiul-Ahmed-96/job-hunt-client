@@ -2,6 +2,7 @@ import React from "react";
 import { FaChevronLeft } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import uuid from "react-uuid";
 import { useGetUserQuery } from "../features/user/userApi";
 
 const ChatSidebar = () => {
@@ -24,13 +25,13 @@ const ChatSidebar = () => {
         </div>
         {user.role == "employer" &&
           filterCandidates.map((candidate) => (
-            <Link to={`/chat/${candidate._id}`} className="hover:bg-primary hover:text-white bg-primary/10 transition-all w-full block py-2 px-3 rounded-full">
+            <Link key={uuid()} to={`/chat/${candidate._id}`} className="hover:bg-primary hover:text-white bg-primary/10 transition-all w-full block py-2 px-3 rounded-full">
               {candidate.firstName} {candidate.lastName}
             </Link>
           ))}
         {user.role == "candidate" &&
         filterEmployers.map((employer) => (
-            <Link to={`/chat/${employer._id}`} className="hover:bg-primary hover:text-white bg-primary/10 transition-all w-full block py-2 px-3 rounded-full">
+            <Link key={uuid()} to={`/chat/${employer._id}`} className="hover:bg-primary hover:text-white bg-primary/10 transition-all w-full block py-2 px-3 rounded-full">
               {employer.firstName} {employer.lastName}
             </Link>
           ))}

@@ -4,8 +4,8 @@ import { FiTrash } from "react-icons/fi";
 import { useSelector } from "react-redux";
 import Loading from "../../components/reusable/Loading";
 import {
-    useDeleteJobMutation,
-    useGetJobQuery
+  useDeleteJobMutation,
+  useGetJobQuery
 } from "../../features/job/jobApi";
 
 const ManageJob = () => {
@@ -62,7 +62,7 @@ const ManageJob = () => {
             </thead>
             <tbody>
               {filterEmployerJob.map((job) => (
-                <tr class="bg-white border-b  hover:bg-gray-50">
+                <tr key={job._id} class="bg-white border-b  hover:bg-gray-50">
                   <th
                     scope="row"
                     class="px-6 py-4 font-medium text-primary whitespace-nowrap"
