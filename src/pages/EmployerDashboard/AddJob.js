@@ -46,7 +46,7 @@ const AddJob = () => {
   return (
     <div className="flex justify-center items-center overflow-auto p-10">
       <form
-        className="bg-secondary/20 shadow-lg p-10 rounded-2xl flex flex-wrap gap-3 max-w-3xl justify-between"
+        className="bg-primary/10 shadow-lg p-10 rounded-2xl flex flex-wrap gap-3 max-w-3xl justify-between"
         onSubmit={handleSubmit(onSubmit)}
       >
         <h1 className="w-full text-2xl text-primary mb-5">

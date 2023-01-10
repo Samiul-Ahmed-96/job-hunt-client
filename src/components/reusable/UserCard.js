@@ -1,5 +1,6 @@
 import React from "react";
-import userAvater from '../../assets/user.svg';
+import femaleAvater from '../../assets/female.svg';
+import maleAvater from '../../assets/user.svg';
 
 const UserCard = ({ userData }) => {
   const {
@@ -25,36 +26,36 @@ const UserCard = ({ userData }) => {
     >
       <div className="flex justify-between">
         <div >
-            <img className="w-14" src={userAvater} alt="" />
-          <p className="text capitalize ">
+            <img className="w-14" src={gender == 'male' ? maleAvater : femaleAvater } alt="user" />
+          <p className="text capitalize text-sm">
             Name : {firstName} {lastName}
           </p>
           {address && (
             <div>
-              <p>Country : {country} </p>
+              <p className="capitalize">Country : {country} </p>
             </div>
           )}
-          {companyCategory && <p>Category : {companyCategory}</p>}
+          {companyCategory && <p className="capitalize"> {companyCategory}</p>}
 
           <small className="text-primary/70 ">
             {companyName && (
-              <span className="font-semibold hover:text-primary  transition-all">
+              <span className="font-semibold hover:text-primary capitalize  transition-all">
                 Company Name : {companyName}
               </span>
             )}
           </small>
         </div>
         <div className="flex-row items-center bg-primary/10 p-2 rounded-lg">
-          {employeeRange && <span>Employee Range : {employeeRange}</span>}
-          {roleInCompany && <p> Role in Company : {roleInCompany}</p>}
+          {employeeRange && <span className="text-xs">Employee Range : {employeeRange}</span>}
+          {roleInCompany && <p className="text-sm"> Role in Company : {roleInCompany}</p>}
           {address && (
             <div>
-              <h6>Address : {address}</h6>
-              <h5 className="mr-4">City : {city}</h5>
-              <span>Post code : {postcode}</span>
+              <h6 className="capitalize text-xs">Address : {address}</h6>
+              <h5 className="mr-4 capitalize text-xs">City : {city}</h5>
+              <span className="capitalize text-xs">Post code : {postcode}</span>
             </div>
           )}
-          {gender && <p>Gender : {gender}</p>}
+          {gender && <p className="capitalize">Gender : {gender}</p>}
         </div>
       </div>
     </div>

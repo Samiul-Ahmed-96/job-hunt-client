@@ -23,9 +23,7 @@ const Navbar = () => {
   return (
     <div>
       <nav
-        className={`h-14  fixed w-full z-[999] ${
-          pathname === "/" ? null : "bg-white"
-        }`}
+        className={`h-14 bg-white  fixed w-full z-[999] lg:px-0 md:px-4`}
       >
         <ul className="container  mx-auto flex gap-3 h-full items-center">
           <li className="flex-auto font-semibold text-2xl text-primary">
