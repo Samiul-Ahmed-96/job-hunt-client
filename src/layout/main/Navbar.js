@@ -23,11 +23,11 @@ const Navbar = () => {
   return (
     <div>
       <nav
-        className={`h-14 fixed w-full z-[999] ${
+        className={`h-14  fixed w-full z-[999] ${
           pathname === "/" ? null : "bg-white"
         }`}
       >
-        <ul className="max-w-[1600px] mx-auto flex gap-3 h-full items-center">
+        <ul className="container  mx-auto flex gap-3 h-full items-center">
           <li className="flex-auto font-semibold text-2xl text-primary">
             <Link to="/">JobHunt</Link>
           </li>
@@ -46,7 +46,32 @@ const Navbar = () => {
               Jobs
             </Link>
           </li>
+          {email && role && (
+            <li>
+              <Link
+                className="border border-black px-2 py-1 rounded-full hover:border-primary hover:text-white hover:bg-primary hover:px-4 transition-all "
+                to="/dashboard"
+              >
+                Dashboard
+              </Link>
+            </li>
+          )}
 
+        
+          {email && <Link title="Go To Chat" className="border border-black px-2 py-1 rounded-full hover:border-primary hover:text-white hover:bg-primary hover:px-4 transition-all" to={'/chat'}>
+            <BsChatDots/>
+          </Link>}
+          
+          {email && !role && (
+            <li>
+              <Link
+                className="border border-black px-2 py-1 rounded-full hover:border-primary hover:text-white hover:bg-primary hover:px-4 transition-all "
+                to="/register"
+              >
+                Get Started
+              </Link>
+            </li>
+          )}
           {email ? (
             <button
               title="Logout"
@@ -62,29 +87,6 @@ const Navbar = () => {
                 to="/login"
               >
                 Login
-              </Link>
-            </li>
-          )}
-          {email && <Link title="Go To Chat" className="border border-black px-2 py-1 rounded-full hover:border-primary hover:text-white hover:bg-primary hover:px-4 transition-all" to={'/chat'}>
-            <BsChatDots/>
-          </Link>}
-          {email && role && (
-            <li>
-              <Link
-                className="border border-black px-2 py-1 rounded-full hover:border-primary hover:text-white hover:bg-primary hover:px-4 transition-all "
-                to="/dashboard"
-              >
-                Dashboard
-              </Link>
-            </li>
-          )}
-          {email && !role && (
-            <li>
-              <Link
-                className="border border-black px-2 py-1 rounded-full hover:border-primary hover:text-white hover:bg-primary hover:px-4 transition-all "
-                to="/register"
-              >
-                Get Started
               </Link>
             </li>
           )}

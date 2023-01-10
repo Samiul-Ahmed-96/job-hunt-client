@@ -21,12 +21,12 @@ const UserCard = ({ userData }) => {
   return (
     <div
       key={_id}
-      className="border border-gray-300 shadow-xl p-5 rounded-2xl text-primary"
+      className="border shadow-lg p-5 rounded-lg"
     >
-      <div className="flex justify-between  text-primary">
-        <div>
+      <div className="flex justify-between">
+        <div >
             <img className="w-14" src={userAvater} alt="" />
-          <p className="text-xl capitalize ">
+          <p className="text capitalize ">
             Name : {firstName} {lastName}
           </p>
           {address && (
@@ -38,14 +38,14 @@ const UserCard = ({ userData }) => {
 
           <small className="text-primary/70 ">
             {companyName && (
-              <span className="font-semibold hover:text-primary cursor-pointer hover:underline transition-all">
+              <span className="font-semibold hover:text-primary  transition-all">
                 Company Name : {companyName}
               </span>
             )}
           </small>
         </div>
-        <div className="flex-col justify-between">
-          {employeeRange && <p>Employee Range : {employeeRange}</p>}
+        <div className="flex-row items-center bg-primary/10 p-2 rounded-lg">
+          {employeeRange && <span>Employee Range : {employeeRange}</span>}
           {roleInCompany && <p> Role in Company : {roleInCompany}</p>}
           {address && (
             <div>

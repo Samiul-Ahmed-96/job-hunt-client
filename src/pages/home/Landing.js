@@ -75,7 +75,7 @@ const Landing = () => {
 
   return (
     <div ref={el} className="h-screen">
-      <div className="max-w-4xl h-[80vh] rounded-b-full absolute top-0 left-1/2 -translate-x-1/2 overflow-hidden z-0 md:w-full md:right-5">
+      <div className="max-w-3xl h-[80vh] rounded-b-full absolute top-18 left-1/2 -translate-x-1/2 overflow-hidden z-0 md:w-full md:right-5">
         <img
           id="hero1"
           src={hero1}
@@ -95,7 +95,7 @@ const Landing = () => {
           className="object-cover h-full w-full opacity-0"
         />
       </div>
-      <div className="h-full w-full flex items-center z-10 relative">
+      <div className="h-full flex items-center z-10 relative">
         <div className="flex w-full">
           <div className="w-1/2 flex flex-col items-start">
             <h1 id="hero-title" className="heroElement font-bold text-7xl">

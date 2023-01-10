@@ -46,12 +46,12 @@ const Login = () => {
   },[user.role])
 
   return (
-    <div className="flex h-screen items-center">
+    <div className="flex h-screen items-center bg-primary/10">
       <div className="w-1/2">
         <img src={loginImage} className="h-full w-full" alt="" />
       </div>
       <div className="w-1/2 grid place-items-center">
-        <div className="bg-secondary rounded-lg grid place-items-center p-10">
+        <div className="bg-white shadow-lg rounded-lg grid place-items-center p-10">
           <h1 className="mb-10 font-medium text-2xl">Login</h1>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="space-y-3">

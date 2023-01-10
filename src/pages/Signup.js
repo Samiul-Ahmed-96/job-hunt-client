@@ -3,7 +3,7 @@ import { useForm, useWatch } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import loginImage from "../assets/login.svg";
+import loginImage from "../assets/signup.svg";
 import { createUser, loginUserWithGoogle } from "../features/auth/authSlice";
 const Signup = () => {
   const { handleSubmit, register, reset, control } = useForm();
@@ -49,12 +49,12 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex h-screen items-center pt-14">
+    <div className="flex h-screen items-center pt-14 bg-primary/10">
       <div className="w-1/2">
         <img src={loginImage} className="h-full w-full" alt="" />
       </div>
       <div className="w-1/2 grid place-items-center">
-        <div className="bg-secondary rounded-lg grid place-items-center p-10">
+        <div className="bg-white rounded-lg grid place-items-center p-10 shadow-lg">
           <h1 className="mb-10 font-medium text-2xl">Sign up</h1>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="space-y-3">

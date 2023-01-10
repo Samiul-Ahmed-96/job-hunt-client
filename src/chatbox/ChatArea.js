@@ -43,8 +43,8 @@ const ChatArea = () => {
                 <p
                   className={
                     chat?.sender === user?.email
-                      ? "bg-sky-200 inline-block float-right py-1 px-3 rounded-full"
-                      : "bg-slate-300 float-left py-1 px-3 rounded-full"
+                      ? "bg-primary/10 inline-block float-right py-1 px-3 rounded-full"
+                      : "bg-primary float-left py-1 px-3 rounded-full text-white"
                   }
                 >
                   {chat?.message}

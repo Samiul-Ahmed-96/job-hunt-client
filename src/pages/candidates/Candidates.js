@@ -17,7 +17,7 @@ const Candidates = () => {
       <div className="bg-primary/10 p-5 rounded-2xl">
         <h1 className="font-semibold text-xl">Candidates</h1>
       </div>
-      <div className="grid grid-cols-2 gap-5 mt-5">
+      <div className="grid grid-cols-3 gap-5 mt-5">
         {filterCandidates.map((candidate) => (
           <UserCard userData={candidate}></UserCard>
         ))}

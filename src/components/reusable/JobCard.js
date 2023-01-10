@@ -13,9 +13,9 @@ const JobCard = ({ jobData }) => {
   return (
     <div
       key={_id}
-      className='border border-gray-300 shadow-xl p-5 rounded-2xl text-primary'
+      className='border shadow-xl p-5 rounded-2xl'
     >
-      <div className='flex justify-between  text-primary'>
+      <div className='flex justify-between'>
         <div>
           <p className='text-xl'>{position}</p>
           
