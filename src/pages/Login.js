@@ -38,10 +38,10 @@ const Login = () => {
   
   useEffect(()=>{
     if(user.role == 'employer'){
-      navigate('/dashboard')
+      navigate('/')
     }
     if(user.role == 'candidate'){
-      navigate('/dashboard')
+      navigate('/')
     }
   },[user.role])
 

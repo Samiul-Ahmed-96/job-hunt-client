@@ -31,7 +31,7 @@ const ManageJob = () => {
   }
 
   return (
-    <div className="pt-14">
+    <div className="p-6">
       <div className="bg-primary/10 p-5 rounded-2xl">
         <h1 className="font-semibold text-xl">Manage Job</h1>
       </div>

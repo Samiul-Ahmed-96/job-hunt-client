@@ -40,3 +40,19 @@
 .btn {
   @apply px-4 py-2 border border-primary text-primary rounded-full hover:bg-primary hover:text-white transition-all hover:px-6 disabled:text-gray-300 disabled:border-gray-300 disabled:hover:px-4 disabled:hover:bg-transparent disabled:cursor-not-allowed;
 }
+.conversation {
+  height: 685px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+@media screen and (max-width: 1600px) {
+  .conversation {
+    height: 495px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+}

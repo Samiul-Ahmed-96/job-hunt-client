@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useGetChatsQuery } from "../features/chat/chatApi";
@@ -7,28 +7,52 @@ import ChatInput from "./ChatInput";
 
 const ChatArea = () => {
   const { id } = useParams();
-  const {user} = useSelector(state => state.auth)
+  const { user } = useSelector((state) => state.auth);
   const { data } = useGetUserByIdQuery(id);
   const receiver = data?.data;
+  const setRef = useCallback((node) => {
+    if (node) {
+      node.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
+  console.log("rec", receiver?.email, "user", user?.email);
 
-  const { data: chats } = useGetChatsQuery();
+  const { data: chats } = useGetChatsQuery(id,{pollingInterval:3000});
 
   const allChats = chats?.data;
 
+  const filterChats = allChats?.filter(
+    (chat) =>
+      (chat.sender == user?.email && chat.receiver == receiver?.email) ||
+      (chat.sender == receiver?.email && chat.receiver == user?.email)
+  );
 
   return (
     <div className="p-10">
       <div className="bg-primary/10 p-5 rounded-2xl">
-        <h1 className="font-semibold text-xl">
+        <h1 className="font-semibold text-xl capitalize">
           {receiver?.firstName} {receiver?.lastName}
         </h1>
       </div>
-      <div className="grid gap-5 mt-5 relative">
-        {allChats?.map((chat) => (
-          <div key={chat._id} >
-            <p className={chat?.sender === user.email ? 'bg-primary/10 inline-block float-right py-1 px-3 rounded-full' : 'bg-teal-200 float-left py-1 px-3 rounded-full'}>{chat?.message}</p>
-          </div>
-        ))}
+      <div className=" mt-5 relative ">
+        <div className="conversation  flex flex-col gap-5">
+          {filterChats?.map((chat, index) => {
+            const lastMessage = filterChats.length - 1 === index;
+            return (
+              <div key={chat._id} ref={lastMessage ? setRef : null}>
+                <p
+                  className={
+                    chat?.sender === user?.email
+                      ? "bg-sky-200 inline-block float-right py-1 px-3 rounded-full"
+                      : "bg-slate-300 float-left py-1 px-3 rounded-full"
+                  }
+                >
+                  {chat?.message}
+                </p>
+              </div>
+            );
+          })}
+        </div>
         <ChatInput />
       </div>
     </div>

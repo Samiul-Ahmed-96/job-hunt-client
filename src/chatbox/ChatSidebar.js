@@ -28,7 +28,7 @@ const ChatSidebar = () => {
             <Link
               key={uuid()}
               to={`/chat/${candidate._id}`}
-              className="hover:bg-primary hover:text-white bg-primary/10 transition-all w-full block py-2 px-3 rounded-full"
+              className="hover:bg-primary hover:text-white bg-primary/10 transition-all w-full block py-2 px-3 rounded-full capitalize"
             >
               {candidate.firstName} {candidate.lastName}
             </Link>
@@ -38,7 +38,7 @@ const ChatSidebar = () => {
             <Link
               key={uuid()}
               to={`/chat/${employer._id}`}
-              className="hover:bg-primary hover:text-white bg-primary/10 transition-all w-full block py-2 px-3 rounded-full"
+              className="hover:bg-primary hover:text-white bg-primary/10 transition-all w-full block py-2 px-3 rounded-full capitalize"
             >
               {employer.firstName} {employer.lastName}
             </Link>
