@@ -1,9 +1,9 @@
 import { gsap } from "gsap";
 import React, { useLayoutEffect, useRef } from "react";
 import { BiSearchAlt } from "react-icons/bi";
-import hero1 from "../../assets/hero-01.jpg";
-import hero2 from "../../assets/hero-02.jpg";
-import hero3 from "../../assets/hero-03.jpg";
+import hero1 from "../../assets/hero-1.jpg";
+import hero2 from "../../assets/hero-2.jpg";
+import hero3 from "../../assets/hero-3.jpg";
 import Badge from "../../components/reusable/Badge";
 
 const Landing = () => {
