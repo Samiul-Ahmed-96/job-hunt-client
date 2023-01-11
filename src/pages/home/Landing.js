@@ -75,7 +75,7 @@ const Landing = () => {
 
   return (
     <div ref={el} className="h-screen">
-      <div className="max-w-3xl h-[80vh] rounded-b-full absolute top-18 left-1/2 -translate-x-1/2 overflow-hidden z-0 md:w-full md:right-5">
+      <div className="max-w-3xl h-[80vh] rounded-b-full absolute top-18 left-1/2 -translate-x-1/2 overflow-hidden z-0 md:w-full md:right-5 sm:w-full">
         <img
           id="hero1"
           src={hero1}
@@ -96,9 +96,12 @@ const Landing = () => {
         />
       </div>
       <div className="h-full flex items-center z-10 relative">
-        <div className="flex w-full">
-          <div className="w-1/2 flex flex-col items-start">
-            <h1 id="hero-title" className="heroElement font-bold text-7xl">
+        <div className="flex w-full lg:mt-0 md:px-4 md:mt-4 sm:mt-0 sm:flex-row">
+          <div className="w-1/2 sm:w-full flex flex-col items-start">
+            <h1
+              id="hero-title"
+              className="heroElement font-bold text-7xl sm:text-5xl"
+            >
               Find the perfect <br /> job for you
             </h1>
             <p id="hero-subtitle" className="mt-5 text-lg">
@@ -133,7 +136,7 @@ const Landing = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col justify-between md:justify-around md:mr-6">
+          <div className="flex flex-col lg:justify-between md:mr-52 md:block  sm:hidden gap-8">
             <div className="statCard rounded-3xl shadow-2xl p-7 bg-white relative left-[80%]">
               <div>
                 <span className="text-2xl text-purple-600 font-bold">319 </span>

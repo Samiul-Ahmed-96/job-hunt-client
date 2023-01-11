@@ -1,13 +1,14 @@
 import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import Navbar from "./Navbar";
+import Navbar from "../../layout/main/Navbar";
 
 const Main = () => {
   const { pathname } = useLocation();
 
   return (
     <div>
-      <Navbar />
+    {/*  */}
+    <Navbar />
       <div
         className="container mx-auto"
       >

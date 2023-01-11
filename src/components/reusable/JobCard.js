@@ -29,7 +29,7 @@ const JobCard = ({ jobData }) => {
         
         <p>{location}</p>
       </div>
-      <div className='flex justify-between items-center mt-5'>
+      <div className='flex md:flex-row md:justify-between md:items-center mt-5 sm:flex-col sm:justify-start'>
         <p>{employmentType}</p>
         {
           user.role == "employer" && <p>Total Applied : {applicants.length}</p>
