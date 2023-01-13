@@ -95,12 +95,12 @@ const Landing = () => {
           className="object-cover h-full w-full opacity-0"
         />
       </div>
-      <div className="h-full flex items-center z-10 relative">
+      <div className="lg:h-full sm:h-4/5 flex items-center z-10 relative">
         <div className="flex w-full lg:mt-0 md:px-4 md:mt-4 sm:mt-0 sm:flex-row">
           <div className="w-1/2 sm:w-full flex flex-col items-start">
             <h1
               id="hero-title"
-              className="heroElement font-bold text-7xl sm:text-5xl"
+              className="heroElement lg:text-black font-bold text-7xl sm:text-5xl sm:text-primary"
             >
               Find the perfect <br /> job for you
             </h1>
@@ -136,8 +136,8 @@ const Landing = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col lg:justify-between md:mr-52 md:block  sm:hidden gap-8">
-            <div className="statCard rounded-3xl shadow-2xl p-7 bg-white relative left-[80%]">
+          <div className="xl:block lg:hidden  md:hidden sm:hidden">
+            <div className="statCard rounded-3xl shadow-2xl p-7 my-4 bg-white relative left-[80%]">
               <div>
                 <span className="text-2xl text-purple-600 font-bold">319 </span>
                 <span>Job offers</span>
@@ -146,7 +146,7 @@ const Landing = () => {
                 In Business Development
               </p>
             </div>
-            <div className="statCard rounded-3xl shadow-2xl p-7 bg-white relative left-[60%]">
+            <div className="statCard rounded-3xl shadow-2xl p-7 my-4 bg-white relative left-[60%]">
               <div>
                 <span className="text-2xl text-lime-600 font-bold">265 </span>
                 <span>Job offers</span>

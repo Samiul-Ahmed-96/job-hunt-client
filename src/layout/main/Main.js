@@ -7,11 +7,9 @@ const Main = () => {
 
   return (
     <div>
-    {/*  */}
-    <Navbar />
-      <div
-        className="container mx-auto"
-      >
+      {/*  */}
+      <Navbar />
+      <div className="container mx-auto">
         <Outlet />
       </div>
     </div>
