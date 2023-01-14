@@ -75,7 +75,7 @@ const Landing = () => {
 
   return (
     <div ref={el} className="h-screen">
-      <div className="max-w-3xl h-[80vh] rounded-b-full absolute top-18 left-1/2 -translate-x-1/2 overflow-hidden z-0 md:w-full md:right-5 sm:w-full">
+      <div className="max-w-3xl h-[80vh] rounded-b-full absolute top-0 left-1/2 -translate-x-1/2 overflow-hidden z-0 md:w-full md:right-5 sm:w-full">
         <img
           id="hero1"
           src={hero1}

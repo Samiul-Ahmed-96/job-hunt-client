@@ -27,7 +27,7 @@ const Sidebar = () => {
   return (
     <div className="bg-primary/10 lg:col-span-2 h-screen sticky top-0 sm:col-span-4">
       <ul className="flex flex-col gap-2 w-full h-full  p-3">
-        <div className="flex justify-between items-center my-1">
+        <div className="flex lg:flex-row lg:justify-between lg:items-center sm:flex-col  my-1">
           <Link to="/" className="flex items-center">
             <FaChevronLeft />
             <h1>Back</h1>

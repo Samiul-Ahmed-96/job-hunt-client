@@ -49,12 +49,12 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex h-screen items-center pt-14 bg-primary/10">
-      <div className="w-1/2">
+    <div className="lg:flex h-screen md:flex-row sm:flex-row justify-center items-center bg-primary/10">
+    <div className="lg:w-1/2 sm:w-full">
         <img src={loginImage} className="h-full w-full" alt="" />
       </div>
-      <div className="w-1/2 grid place-items-center">
-        <div className="bg-white rounded-lg grid place-items-center p-10 shadow-lg">
+      <div className="grid  place-items-center sm:mt-10">
+        <div className="bg-white rounded-lg grid place-items-center md:p-10 sm:p-5 shadow-lg">
           <h1 className="mb-10 font-medium text-2xl">Sign up</h1>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="space-y-3">

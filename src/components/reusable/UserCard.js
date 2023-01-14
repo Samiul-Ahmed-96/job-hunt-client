@@ -29,6 +29,7 @@ const UserCard = ({ userData }) => {
             src={gender == "male" ? maleAvater : femaleAvater}
             alt="user"
           />
+         
           <p className="text capitalize text-sm my-2 text-primary bolder">
             {firstName} {lastName}
           </p>
@@ -52,10 +53,10 @@ const UserCard = ({ userData }) => {
           {employeeRange && (
             <span className="text-xs">Employee Range : {employeeRange}</span>
           )}
-          {roleInCompany && <p>Position</p>}
           {roleInCompany && (
             <p className="text-xl text-primary mt-2 bg-white rounded-md p-3">
               {" "}
+              <p className="text-black">Position</p>
               {roleInCompany}
             </p>
           )}
