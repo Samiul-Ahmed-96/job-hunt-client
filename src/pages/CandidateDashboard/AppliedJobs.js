@@ -15,7 +15,7 @@ const AppliedJobs = () => {
   }
 
   return (
-    <div className="pt-6 sm:mx-12 sm:mx-6">
+    <div className="pt-6 md:mx-12 sm:mx-6">
       <div className="bg-primary/10 p-5 rounded-2xl">
         <h1 className="font-semibold text-xl">Applied Jobs</h1>
       </div>

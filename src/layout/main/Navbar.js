@@ -203,12 +203,12 @@ const Navbar = () => {
                   <button
                     title="Logout"
                     onClick={handleLogout}
-                    className=" sm:mt-1 border border-black px-2 py-1 rounded-full hover:border-primary hover:text-white hover:bg-primary hover:px-4 transition-all"
+                    className=" sm:mt-1 border border-black px-2 py-1 rounded-full hover:border-primary mt-1 hover:text-white hover:bg-primary hover:px-4 transition-all"
                   >
                     <FiLogOut />
                   </button>
                 ) : (
-                  <li className="mt-1">
+                  <li className="my-2">
                     <Link
                       className="border border-black px-2 py-1 rounded-full hover:border-primary hover:text-white hover:bg-primary hover:px-4 transition-all "
                       to="/login"

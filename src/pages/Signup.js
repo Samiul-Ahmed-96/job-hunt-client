@@ -13,9 +13,11 @@ const Signup = () => {
   const [disabled, setDisabled] = useState(true);
   const dispatch = useDispatch();
 
-  const { isLoading, email, isError, error } = useSelector(
+  const { isLoading, email, isError, error, user } = useSelector(
     (state) => state.auth
   );
+
+  console.log(user);
 
   useEffect(() => {
     if (
@@ -41,16 +43,16 @@ const Signup = () => {
     if (isError) {
       toast.error(error, { id: "signUp" });
     }
-  }, [ isError, error]);
+  }, [isError, error]);
 
   const onSubmit = ({ email, password }) => {
-    console.log(email, password);
     dispatch(createUser({ email, password }));
   };
 
+
   return (
     <div className="lg:flex h-screen md:flex-row sm:flex-row justify-center items-center bg-primary/10">
-    <div className="lg:w-1/2 sm:w-full">
+      <div className="lg:w-1/2 sm:w-full">
         <img src={loginImage} className="h-full w-full" alt="" />
       </div>
       <div className="grid  place-items-center sm:mt-10">
