@@ -1,12 +1,15 @@
 import { gsap } from "gsap";
 import React, { useLayoutEffect, useRef } from "react";
 import { BiSearchAlt } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 import hero1 from "../../assets/hero-1.jpg";
 import hero2 from "../../assets/hero-2.jpg";
 import hero3 from "../../assets/hero-3.jpg";
 import Badge from "../../components/reusable/Badge";
 
 const Landing = () => {
+
+  const navigate = useNavigate();
   const keywords = [
     "Web Developer",
     "Web Designer",
@@ -73,6 +76,11 @@ const Landing = () => {
     };
   }, []);
 
+  const handleNavigate =() =>{
+    navigate('/jobs')
+  }
+
+
   return (
     <div ref={el} className="h-screen">
       <div className="max-w-3xl h-[80vh] rounded-b-full absolute top-0 left-1/2 -translate-x-1/2 overflow-hidden z-0 md:w-full md:right-5 sm:w-full">
@@ -120,6 +128,7 @@ const Landing = () => {
               />
               <button
                 id="search-button"
+                onClick={()=>handleNavigate()}
                 className="p-2 rounded-full bg-primary  h-14 w-14 grid place-items-center"
               >
                 <BiSearchAlt size="23" color="white" />
