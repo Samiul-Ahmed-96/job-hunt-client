@@ -1,6 +1,7 @@
 import { gsap } from "gsap";
 import React, { useLayoutEffect, useRef } from "react";
 import { BiSearchAlt } from "react-icons/bi";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import hero1 from "../../assets/hero-1.jpg";
 import hero2 from "../../assets/hero-2.jpg";
@@ -8,6 +9,10 @@ import hero3 from "../../assets/hero-3.jpg";
 import Badge from "../../components/reusable/Badge";
 
 const Landing = () => {
+
+  const {user} = useSelector(state => state.auth)
+
+  console.log(user)
 
   const navigate = useNavigate();
   const keywords = [
@@ -106,6 +111,10 @@ const Landing = () => {
       <div className="lg:h-full sm:h-4/5 flex items-center z-10 relative">
         <div className="flex w-full lg:mt-0 md:px-4 md:mt-4 sm:mt-0 sm:flex-row">
           <div className="w-1/2 sm:w-full flex flex-col items-start">
+
+            {
+              user && <h4 className="text-primary bg-white my-5 border p-2 rounded-full font-bold"> <span className="text-black font-light">Hello</span> {user.firstName} {user.lastName}</h4>
+            }
             <h1
               id="hero-title"
               className="heroElement lg:text-black font-bold text-7xl sm:text-5xl sm:text-primary"
@@ -117,7 +126,7 @@ const Landing = () => {
             </p>
             <div
               id="search-container"
-              className="bg-white rounded-full p-3 flex w-full max-w-xl overflow-hidden mt-5  shadow-lg"
+              className="bg-white rounded-full p-1 flex w-full max-w-xl overflow-hidden mt-5  shadow-lg"
             >
               <input
                 className="flex-auto text-lg p-2 border-none outline-none focus:ring-0"

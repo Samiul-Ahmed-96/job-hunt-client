@@ -12,7 +12,7 @@ const Navbar = () => {
   const { pathname } = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const {
-    user: { email, role , firstName },
+    user: { email, role , firstName ,lastName},
   } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
@@ -207,14 +207,14 @@ const Navbar = () => {
                   <button
                     title="Logout"
                     onClick={handleLogout}
-                    className=" sm:mt-1 border border-black px-2 py-1 rounded-full hover:border-primary mt-1 hover:text-white hover:bg-primary hover:px-4 transition-all"
+                    className=" sm:mt-1 inline-block border border-black px-2 py-1 rounded-full hover:border-primary mt-1 hover:text-white hover:bg-primary hover:px-4 transition-all"
                   >
                     <FiLogOut />
                   </button>
                 ) : (
-                  <li className="my-2">
+                  <li className="my-2 inline-block">
                     <Link
-                      className="border border-black px-2 py-1 rounded-full hover:border-primary hover:text-white hover:bg-primary hover:px-4 transition-all "
+                      className="border  border-black px-2 py-1 rounded-full hover:border-primary hover:text-white hover:bg-primary hover:px-4 transition-all "
                       to="/login"
                     >
                       Login
@@ -222,9 +222,7 @@ const Navbar = () => {
                   </li>
                 )}
 
-                {
-                  firstName && <li className="border bg-primary text-white capitalize mt-1 border-black px-2 rounded-full">{firstName}</li>
-                }
+          
               </ul>
             </div>
           </div>

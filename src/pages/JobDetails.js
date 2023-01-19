@@ -49,9 +49,9 @@ const JobDetails = () => {
 
   const checkApply  = applicants?.map((applicant) => applicant.email == user.email)
 
-  console.log(checkApply)
+  const [checkedApplied] = checkApply;
 
-
+  console.log(checkedApplied);
 
 
   const handleApply = () => {
