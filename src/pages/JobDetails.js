@@ -28,7 +28,6 @@ const JobDetails = () => {
   const [replyQues] = useReplyQuesMutation();
   const {
     position,
-    companyName,
     employmentType,
     experience,
     location,
@@ -38,9 +37,22 @@ const JobDetails = () => {
     skills,
     overview,
     queries,
+    companyName,
+    applicants,
+    employeeRange,
     workLevel,
     _id,
   } = data?.data || {};
+
+
+  //Check Applied Job
+
+  const checkApply  = applicants?.map((applicant) => applicant.email == user.email)
+
+  console.log(checkApply)
+
+
+
 
   const handleApply = () => {
     if (user.role === "employer") {
@@ -101,7 +113,7 @@ const JobDetails = () => {
         <div className="space-y-5">
           <div className="flex justify-between items-center mt-5">
             <h1 className="text-xl font-semibold text-primary">{position}</h1>
-            <button onClick={handleApply} className="btn">
+            <button  onClick={handleApply} className="btn">
               Apply
             </button>
           </div>
@@ -238,7 +250,7 @@ const JobDetails = () => {
           </div>
           <div>
             <p>Company Size</p>
-            <h1 className="font-semibold text-lg">Above 100</h1>
+            <h1 className="font-semibold text-lg">{employeeRange}</h1>
           </div>
           <div>
             <p>Founded</p>

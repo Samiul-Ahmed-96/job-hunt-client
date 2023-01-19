@@ -12,7 +12,7 @@ const Navbar = () => {
   const { pathname } = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const {
-    user: { email, role },
+    user: { email, role , firstName },
   } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
@@ -98,6 +98,10 @@ const Navbar = () => {
                     </Link>
                   </li>
                 )}
+
+                {
+                  firstName && <li className="border bg-primary text-white capitalize border-black px-2 rounded-full">{firstName}</li>
+                }
               </ul>
             </div>
             <div className="-mr-2 flex md:hidden">
@@ -217,6 +221,10 @@ const Navbar = () => {
                     </Link>
                   </li>
                 )}
+
+                {
+                  firstName && <li className="border bg-primary text-white capitalize mt-1 border-black px-2 rounded-full">{firstName}</li>
+                }
               </ul>
             </div>
           </div>
