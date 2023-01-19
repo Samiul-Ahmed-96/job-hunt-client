@@ -12,8 +12,8 @@ const Jobs = () => {
 
   useEffect(() => {
     setJobs(jobList?.data);
-    const filteredData = jobList?.data.filter((coin) =>
-      coin.position.toLowerCase().includes(searchTerm)
+    const filteredData = jobList?.data.filter((job) =>
+      job.position.toLowerCase().includes(searchTerm)
     );
     setJobs(filteredData);
   }, [searchTerm, jobList]);
