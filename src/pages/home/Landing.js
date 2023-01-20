@@ -113,7 +113,7 @@ const Landing = () => {
           <div className="w-1/2 sm:w-full flex flex-col items-start">
 
             {
-              user && <h4 className="text-primary bg-white my-5 border p-2 rounded-full font-bold"> <span className="text-black font-light">Hello</span> {user.firstName} {user.lastName}</h4>
+              user?.firstName && <h4 className="text-primary bg-white my-5 border p-2 rounded-full font-bold"> <span className="text-black font-light">Hello</span> {user.firstName} {user.lastName}</h4>
             }
             <h1
               id="hero-title"

@@ -47,11 +47,11 @@ const JobDetails = () => {
 
   //Check Applied Job
 
-  const checkApply  = applicants?.map((applicant) => applicant.email == user.email)
+  // const checkApply  = applicants?.map((applicant) => applicant.email == user.email)
 
-  const [checkedApplied] = checkApply;
+  // const [checkedApplied] = checkApply;
 
-  console.log(checkedApplied);
+  // console.log(checkedApplied);
 
 
   const handleApply = () => {
