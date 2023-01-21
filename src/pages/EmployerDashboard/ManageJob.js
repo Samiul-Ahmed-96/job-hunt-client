@@ -16,7 +16,6 @@ const ManageJob = () => {
   const jobs = data?.data || [];
 
   const filterEmployerJob = jobs.filter((job) => job?.email === user.email);
-  console.log(filterEmployerJob);
   const handleDeleteJob = (id) => {
     deleteJob(id);
   };

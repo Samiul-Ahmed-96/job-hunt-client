@@ -12,7 +12,6 @@ const Landing = () => {
 
   const {user} = useSelector(state => state.auth)
 
-  console.log(user)
 
   const navigate = useNavigate();
   const keywords = [

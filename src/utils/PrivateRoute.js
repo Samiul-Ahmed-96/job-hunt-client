@@ -10,7 +10,6 @@ const PrivateRoute = ({ children }) => {
     isLoading,
   } = useSelector((state) => state.auth);
 
-  console.log(isLoading);
   if (isLoading) {
     return <Loading />;
   }

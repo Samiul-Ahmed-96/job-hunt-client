@@ -3,6 +3,7 @@ import { FaChevronLeft } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import uuid from "react-uuid";
+import chatUser from "../assets/chat-user.png";
 import { useGetUserQuery } from "../features/user/userApi";
 
 const ChatSidebar = () => {
@@ -28,8 +29,9 @@ const ChatSidebar = () => {
             <Link
               key={uuid()}
               to={`/chat/${candidate._id}`}
-              className="hover:bg-primary hover:text-white bg-primary/10 transition-all w-full block py-2 px-3 rounded-full capitalize"
-            >
+              className="hover:bg-primary items-center hover:text-white bg-primary/10 transition-all w-full block py-2 px-3 rounded-full capitalize"
+            > 
+              <img className="w-[20px] mr-2 inline-block" src={chatUser} alt="" />
               {candidate.firstName} {candidate.lastName}
             </Link>
           ))}
@@ -38,8 +40,9 @@ const ChatSidebar = () => {
             <Link
               key={uuid()}
               to={`/chat/${employer._id}`}
-              className="hover:bg-primary hover:text-white bg-primary/10 transition-all w-full block py-2 px-3 rounded-full capitalize sm:text-sm"
+              className="hover:bg-primary items-center hover:text-white bg-primary/10 transition-all w-full block py-2 px-3 rounded-full capitalize sm:text-sm"
             >
+            <img className="w-[20px] mr-2 inline-block" src={chatUser} alt="" />
               {employer.firstName} {employer.lastName}
             </Link>
           ))}

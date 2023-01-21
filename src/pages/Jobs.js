@@ -25,7 +25,7 @@ const Jobs = () => {
   return (
     <div className="pt-14 lg:px-0 md:px-4">
       <div className="bg-primary/10 p-5 rounded-2xl">
-        <h1 className="font-semibold text-xl">Jobs</h1>
+        <h1 className="font-semibold text-primary text-2xl">Jobs</h1>
       </div>
       <div
         id="search-container"

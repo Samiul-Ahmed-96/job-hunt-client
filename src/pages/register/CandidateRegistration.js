@@ -13,7 +13,6 @@ const CandidateRegistration = () => {
   const [postUser, { isLoading, isError }] = useRegisterMutation();
   const { handleSubmit, register, control , reset } = useForm();
   const term = useWatch({ control, name: "term" });
-  console.log(term);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,7 +22,6 @@ const CandidateRegistration = () => {
   }, []);
 
   const onSubmit = (data) => {
-    console.log(data);
     postUser({ ...data, role: "candidate" });
     reset();
   };
