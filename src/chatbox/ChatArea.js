@@ -16,7 +16,6 @@ const ChatArea = () => {
       node.scrollIntoView({ behavior: "smooth" });
     }
   }, []);
-  console.log("rec", receiver?.email, "user", user?.email);
 
   const { data: chats } = useGetChatsQuery(id,{pollingInterval:3000});
 

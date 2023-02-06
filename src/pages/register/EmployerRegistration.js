@@ -44,7 +44,6 @@ const EmployerRegistration = () => {
   const employeeRange = ["1 - 10", "11 - 50", "51 - 100", "Above 100"];
 
   const onSubmit = (data) => {
-    console.log(data);
     postUser({ ...data, role: "employer" });
     reset();
   };

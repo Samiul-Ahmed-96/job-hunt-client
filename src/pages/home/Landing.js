@@ -86,7 +86,7 @@ const Landing = () => {
 
 
   return (
-    <div ref={el} className="h-screen">
+    <div ref={el} className="h-screen container">
       <div className="max-w-3xl h-[80vh] rounded-b-full absolute top-0 left-1/2 -translate-x-1/2 overflow-hidden z-0 md:w-full md:right-5 sm:w-full">
         <img
           id="hero1"
@@ -154,7 +154,7 @@ const Landing = () => {
             </div>
           </div>
           <div className="xl:block lg:hidden  md:hidden sm:hidden">
-            <div className="statCard rounded-3xl shadow-2xl p-7 my-4 bg-white relative left-[80%]">
+            <div className="statCard rounded-3xl shadow-2xl p-7 my-4 bg-white relative left-[20%]">
               <div>
                 <span className="text-2xl text-purple-600 font-bold">319 </span>
                 <span>Job offers</span>
@@ -163,7 +163,7 @@ const Landing = () => {
                 In Business Development
               </p>
             </div>
-            <div className="statCard rounded-3xl shadow-2xl p-7 my-4 bg-white relative left-[60%]">
+            <div className="statCard rounded-3xl shadow-2xl p-7 my-4 bg-white relative left-[10%]">
               <div>
                 <span className="text-2xl text-lime-600 font-bold">265 </span>
                 <span>Job offers</span>
@@ -172,7 +172,7 @@ const Landing = () => {
                 In Marketing & Communication
               </p>
             </div>
-            <div className="statCard rounded-3xl shadow-2xl p-7 bg-white relative left-[40%]">
+            <div className="statCard rounded-3xl shadow-2xl p-7 bg-white relative left-[0%]">
               <div>
                 <span className="text-2xl text-rose-500 font-bold">324 </span>
                 <span>Job offers</span>
